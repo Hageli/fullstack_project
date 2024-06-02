@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Role = require('../models/Role');
+const { verifyToken, verifyAdmin } = require('../utils/verifyToken');
 
 // Create a new role
-router.post('/create', async (req, res) => {
+router.post('/create', verifyAdmin, async (req, res) => {
     const tempRole = await Role.findOne({role: req.body.role});
     // Check if role already exists
     if(tempRole) {
@@ -26,7 +27,7 @@ router.post('/create', async (req, res) => {
 });
 
 // Update a role
-router.put('/update/:id', async (req, res) => {
+router.put('/update/:id', verifyAdmin, async (req, res) => {
     try {
         const role = await Role.findById(req.params.id);
         // Check if role exists
@@ -48,7 +49,7 @@ router.put('/update/:id', async (req, res) => {
 });
 
 // Get all roles
-router.get('/get', async (req, res) => {
+router.get('/get', verifyAdmin, async (req, res) => {
     try {
         const roles = await Role.find({});
         res.status(200).send(roles);
@@ -58,7 +59,7 @@ router.get('/get', async (req, res) => {
 });
 
 // Get a role by id
-router.get('/get/:id', async (req, res) => {
+router.get('/get/:id', verifyToken, async (req, res) => {
     try {
         const role = await Role.findById(req.params.id);
         // Check if role exists
@@ -73,7 +74,7 @@ router.get('/get/:id', async (req, res) => {
 });
 
 // Delete a role
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', verifyAdmin, async (req, res) => {
     try {
         const role = await Role.findById(req.params.id);
         // Check if role exists

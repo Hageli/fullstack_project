@@ -58,7 +58,7 @@ router.get('/get', verifyAdmin, async (req, res) => {
 });
 
 // Get a user by id
-router.get('/get/:id', async (req, res) => {
+router.get('/get/:id', verifyToken, async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         // Check if user exists
@@ -73,7 +73,7 @@ router.get('/get/:id', async (req, res) => {
 });
 
 // Delete a user
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', verifyAdmin, async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         // Check if user exists

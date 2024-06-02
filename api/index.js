@@ -21,14 +21,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTES
 
-// Users route
+// Users router
 const usersRouter = require('./routes/users');
 app.use('/api/users', usersRouter);
 
-// Roles route
+// Roles router
 const rulesRouter = require('./routes/roles');
-const { resolveObjectURL } = require('buffer');
 app.use('/api/roles', rulesRouter);
+
+// Books router
+const booksRouter = require('./routes/books');
+app.use('/api/books', booksRouter);
 
 // Index route
 app.get('/', (req, res) => {
