@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 
+// THIS WIDGET IS USED TO DISPLAY USER INFORMATION
 const UserWidget = ({ userId, picturePath }) => {
     const [ user, setUser ] = useState(null);
     const { palette } = useTheme();
@@ -21,6 +22,7 @@ const UserWidget = ({ userId, picturePath }) => {
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;
 
+    // GET USER BASED ON USERID
     const getUser = async () => {
         const response = await fetch(`http://localhost:3001/users/${userId}`, {
             method: "GET",
@@ -55,6 +57,7 @@ const UserWidget = ({ userId, picturePath }) => {
                 pb="1.1rem"
                 onClick={() => navigate(`/profile/${userId}`)}
             >
+                {/* USER IMAGE, NAME AND FRIEND AMOUNT */}
                 <FlexContent gap="1rem">
                     <UserImage image={picturePath} />
                     <Box>
@@ -77,6 +80,7 @@ const UserWidget = ({ userId, picturePath }) => {
             </FlexContent>
             <Divider />
 
+            {/* USER LOCATION AND OCCUPATION DISPLAY */}
             <Box p="1rem 0">
                 <Box display="flex" alignItems="center" gap="1rem" mb="0.5rem">
                     <LocationOnOutlined fontSize="large" sx={{ color: main}} />
@@ -89,6 +93,7 @@ const UserWidget = ({ userId, picturePath }) => {
             </Box>
             <Divider />
 
+            {/* USER POST IMPRESSIONS AND PROFILE VIEWS !NOTICE! ARBITARY VALUES IN THIS CASE */}
             <Box p="1rem 0">
                 <FlexContent mb="0.5rem">
                     <Typography color={medium}>Profile viewers</Typography>
@@ -101,6 +106,7 @@ const UserWidget = ({ userId, picturePath }) => {
             </Box>
             <Divider />
 
+            {/* USER SOCIAL MEDIA LINKS */}
             <Box p="1rem">
                 <Typography fontSize="1rem" color={main} sx={{ fontWeight: "500" }} mb="1rem">Other social media</Typography>
                     <FlexContent gap="1rem" mb="0.5rem">

@@ -19,10 +19,9 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
     const primaryDark = palette.primary.dark;
     const main = palette.neutral.main;
     const medium = palette.neutral.medium;
-    
-
     const isFriend = friends.find((friend) => friend._id === friendId);
 
+    // ADD / REMOVE FRIEND
     const patchFriend = async () => {
         const response = await fetch(`http://localhost:3001/users/${_id}/${friendId}`, {
             method: "PATCH",
@@ -38,6 +37,8 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
     return (
         <FlexContent>
             <FlexContent gap="1rem">
+                
+                {/* USER IMAGE */}
                 <UserImage image={userPicturePath} size="55px" />
                 <Box
                     onClick={() => {
@@ -45,6 +46,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
                         navigate(0);
                     }}
                 >
+                    {/* USER NAME AND OCCUPATION */}
                     <Typography
                         color={main}
                         variant="h5"
@@ -60,6 +62,8 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
                     </Typography>
                 </Box>
             </FlexContent>
+
+            {/* BUTTON TO ADD / REMOVE FRIEND */}
             <IconButton
                 onClick={() => patchFriend()}
                 sx={{ backgroundColor: primaryLight, p: "0.6rem" }}

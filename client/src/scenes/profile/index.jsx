@@ -43,11 +43,14 @@ function Profile() {
         gap="2rem"
         justifyContent="center"
       >
+        {/* USERINFORMATION AND FRIENDLIST */}
         <Box flexBasis={isNonMobileScreen ? "26%" : undefined}>
           <UserWidget userId={user._id} picturePath={user.picturePath} />
           <Box m="2rem 0" />
           <FriendListWidget userId={userId} />
         </Box>
+
+        {/* USER'S POSTS */}
         <Box flexBasis={isNonMobileScreen ? "42%" : undefined} mt={isNonMobileScreen ? undefined : "2rem"}>
           <UserPostWidget picturePath={user.picturePath} />
           <Box m="2rem 0" />

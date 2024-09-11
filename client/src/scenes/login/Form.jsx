@@ -16,6 +16,7 @@ import { setLogin } from 'state';
 import Dropzone from 'react-dropzone';
 import FlexContent from "components/FlexContent";
 
+{/* REGISTERFORM VALUES */}
 const registerSchema = yup.object().shape({
     firstName: yup.string().required("required"),
     lastName: yup.string().required("required"),
@@ -26,11 +27,13 @@ const registerSchema = yup.object().shape({
     picture: yup.string().required("required")
 })
 
+// LOGINFORM VALUES
 const loginSchema = yup.object().shape({
     email: yup.string().email("invalied email").required("required"),
     password: yup.string().required("required")
 })
 
+// INITIALIZE VALUES FOR REGISTER
 const initialvaluesRegister = {
     firstName: "",
     lastName: "",
@@ -41,6 +44,7 @@ const initialvaluesRegister = {
     picture: ""
 };
 
+// INITIALIZE VALUES FOR LOGIN
 const initialvaluesLogin = {
     email: "",
     password: ""
@@ -55,6 +59,7 @@ const Form = () => {
     const isLogin = pageType === "login";
     const isRegister = pageType === "register"
 
+    {/* REGISTER NEW USER*/}
     const register = async (values, onSubmitProps) => {
         const formData = new FormData();
         for(let value in values) {
@@ -76,7 +81,8 @@ const Form = () => {
             setPageType("login");
         }
     };
-
+     
+    // LOGIN NEW USER
     const login = async (values, onSubmitProps) => {
         
         const loginResponse = await fetch(
@@ -102,6 +108,7 @@ const Form = () => {
         }
     };
 
+    
     const handleFormSubmit = async (values, onSubmitProps) => {
         if(isLogin) await login(values, onSubmitProps);
         if(isRegister) await register(values, onSubmitProps);

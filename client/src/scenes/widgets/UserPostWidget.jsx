@@ -25,6 +25,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPosts } from 'state';
 
+// POST INPUT WIDGET
 const UserPostWidget = ({ picturePath }) => {
     const dispatch = useDispatch();
     const [ isImage, setIsImage ] = useState(false);
@@ -37,6 +38,7 @@ const UserPostWidget = ({ picturePath }) => {
     const mediumMain = palette.neutral.mediumMain;
     const medium = palette.neutral.medium;
 
+    // SENDS THE POST
     const handlePost = async () => {
         const formData = new FormData();
         formData.append("userId", _id);
@@ -60,6 +62,7 @@ const UserPostWidget = ({ picturePath }) => {
     return (
         <WidgetWrapper>
             <FlexContent gap="1.5rem">
+                {/* USER IMAGE ANDTEXT INPUT FIELD */}
                 <UserImage image={picturePath} />
                 <InputBase 
                     placeholder='Make a post'

@@ -38,6 +38,7 @@ const PostWidget = ({
     const main = palette.neutral.main;
     const primary = palette.primary.main;
 
+    // TOGGLE LIKE AND CALL GETPOSTS() / GETUSERPOSTS()
     const patchLike = async () => {
         const config = {
             headers: {
@@ -78,6 +79,7 @@ const PostWidget = ({
             <FlexContent mt="0.25rem">
                 <FlexContent gap="1rem">
 
+                    {/* LIKE BUTTON */}
                     <FlexContent gap="0.3rem">
                         <IconButton onClick={patchLike}>
                             {isLiked ? (
@@ -89,6 +91,7 @@ const PostWidget = ({
                         <Typography>{likeCount}</Typography>
                     </FlexContent>
 
+                    {/* COMMENT BUTTON */}
                     <FlexContent gap="0.3rem">
                         <IconButton onClick={() => setIsComments(!isComments)}>
                             <ChatBubbleOutlineOutlined />
@@ -98,10 +101,13 @@ const PostWidget = ({
                 </FlexContent>
 
 
+                {/* SHARE BUTTON */}
                 <IconButton>
                     <ShareOutlined />
                 </IconButton>
             </FlexContent>
+
+            {/* COMMENT SECTION */}
             {isComments && (
                <Box mt="0.5rem">
                     {comments.map((comment, i) => (

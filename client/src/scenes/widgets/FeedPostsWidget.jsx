@@ -8,6 +8,7 @@ const FeedPostsWidget = ({ userId, isProfile=false}) => {
     const posts = useSelector((state) => state.posts);
     const token = useSelector((state) => state.token);
 
+    // GET ALL POSTS
     const getPosts = async () => {
         const response = await fetch("http://localhost:3001/posts", {
             method: "GET",
@@ -17,6 +18,7 @@ const FeedPostsWidget = ({ userId, isProfile=false}) => {
         dispatch(setPosts(data))
     }
     
+    // GET POSTS FROM USER
     const getUserPosts = async () => {
         const response = await fetch(`http://localhost:3001/posts/${userId}/posts`, {
             method: "GET",

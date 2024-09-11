@@ -10,12 +10,16 @@ const AdvertWidget = () => {
 
     return (
         <WidgetWrapper>
+            
+            {/* AD HEADLINES */}
             <FlexContent>
                 <Typography color={dark} variant="h5">
                     Sponsored
                 </Typography>
                 <Typography color={medium}>Create Ad</Typography>
             </FlexContent>
+
+            {/* AD IMAGE */}
             <img 
                 width="100%"
                 height="auto"
@@ -23,6 +27,8 @@ const AdvertWidget = () => {
                 src="http://localhost:3001/assets/advert.png"
                 style={{ borderRadius: "0.75rem", margin: "0.75rem 0" }}
             />
+
+            {/* AD CONTENT */}
             <FlexContent>
                 <Typography color={main}>Difficulties winning? Join Now!</Typography>
                 <Typography color={medium}>www.example.com</Typography>
