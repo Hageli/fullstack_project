@@ -10,7 +10,7 @@ import Friend from 'components/Friend';
 import WidgetWrapper from 'components/widgetWrapper';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPost } from 'state';
+import { setPost, setPosts } from 'state';
 
 const PostWidget = ({
     postId,
@@ -34,6 +34,15 @@ const PostWidget = ({
     const main = palette.neutral.main;
     const primary = palette.primary.main;
 
+    const getPosts = async () => {
+        const response = await fetch("http://localhost:3001/posts", {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+        dispatch(setPosts(data))
+    }
+
     const patchLike = async () => {
         const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
             method: "PATCH",
@@ -45,6 +54,7 @@ const PostWidget = ({
         })
         const updatedPost = await response.json();
         dispatch(setPost({ post: updatedPost }));
+        getPosts();
     }
 
     return (
