@@ -16,7 +16,7 @@ import { setLogin } from 'state';
 import Dropzone from 'react-dropzone';
 import FlexContent from "components/FlexContent";
 
-{/* REGISTERFORM VALUES */}
+/* REGISTERFORM VALUES */
 const registerSchema = yup.object().shape({
     firstName: yup.string().required("required"),
     lastName: yup.string().required("required"),
@@ -59,7 +59,7 @@ const Form = () => {
     const isLogin = pageType === "login";
     const isRegister = pageType === "register"
 
-    {/* REGISTER NEW USER*/}
+    /* REGISTER NEW USER */
     const register = async (values, onSubmitProps) => {
         const formData = new FormData();
         for(let value in values) {

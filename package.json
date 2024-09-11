@@ -1,0 +1,29 @@
+{
+  "name": "fullstack_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd server & node index.js",
+    "client": "cd client && npm start",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "install-everything": "npm install && npm run install-client && npm run install-server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hageli/fullstack_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hageli/fullstack_project/issues"
+  },
+  "homepage": "https://github.com/Hageli/fullstack_project#readme",
+  "dependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
