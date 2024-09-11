@@ -60,6 +60,9 @@ const FeedPostsWidget = ({ userId, isProfile=false}) => {
                     userPicturePath={userPicturePath}
                     likes={likes}
                     comments={comments}
+                    isProfile={isProfile}
+                    getUserPosts={getUserPosts}
+                    getPosts={getPosts}
                 />
             )
         )}
